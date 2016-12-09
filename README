@@ -1,0 +1,4 @@
+Report about emulation in general, with a small focus on systems like
+the Raspberry Pi.
+
+Needs the `parskip` package to be compiled correctly.
