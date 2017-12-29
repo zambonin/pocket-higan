@@ -1,19 +1,13 @@
-\documentclass[12pt]{article}
+\documentclass[12pt]{sftex/sftex}
 
-\usepackage[brazil]{babel}
-\usepackage[T1]{fontenc}
-\usepackage[a4paper, margin=3cm]{geometry}
-\usepackage[colorlinks, urlcolor=blue, citecolor=red]{hyperref}
-\usepackage[utf8]{inputenc}
 \usepackage{graphicx, parskip}
 
-\title{\textbf{A emulação de consoles como \\ um artefato além da diversão}}
-\author{
-    Caique R. Marques, Gustavo Zambonin, Douglas M. B. Martins \\
-    \small{\texttt{\{c.r.marques,gustavo.zambonin,marcelino.douglas\}@grad.ufsc.br}} \\
-    \small{Tópicos Especiais em Aplicações Tecnológicas III (UFSC -- INE5450)}
-}
-\date{}
+\title{A emulação de consoles como \\ um artefato além da diversão}
+\author{Caique R. Marques, Gustavo Zambonin, Douglas M. B. Martins}
+\email{\{c.r.marques,gustavo.zambonin,marcelino.douglas\}@grad.ufsc.br}
+\src{https://github.com/zambonin/pocket-higan}
+\uniclass{Tópicos Especiais em Aplicações Tecnológicas III}
+\classcode{UFSC-INE5450}
 
 \begin{document}
 
@@ -47,12 +41,9 @@ tópicos, enumerados abaixo, de modo a apresentar uma visão geral do estado da
 vanguarda de emulação, seus benefícios e malefícios.
 
 \section{Combate à obsolescência}
-% https://en.wikipedia.org/wiki/Emulator#Emulation_in_preservation
-% http://www.gamasutra.com/blogs/FelipePepe/20141009/227370/Amnesiac_Heroes_Why_are_we_abandoning_gaming_history.php
-% http://www.gamasutra.com/view/feature/134641/where_games_go_to_sleep_the_game_.php
 
-Um software está restrito a funcionar de acordo com as características do(s)
-hardware(s) para o  qual ele será destinado, portanto, nada pode garantir que
+Um software está restrito a funcionar de acordo com as características dos
+hardwares para o qual ele será destinado, portanto, nada pode garantir que
 este mesmo software funcionará posteriormente, o que também poderá culminar com
 o baixo uso e a raridade do software. Assim como qualquer registro histórico,
 softwares também carregam informações de épocas nos quais eles foram criados e
@@ -69,7 +60,7 @@ desempenho e exige mais requisitos que o hardware original.
 Entretanto, emuladores também podem ser considerados como uma forma ilegal de
 usar o software, tendo em vista que os direitos para uso não estão sendo pagos;
 assim, desenvolvedores criam métodos de proteção do software contra cópias não
-autorizadas, sendo impossível usá-lo a não ser na(s) máquina(s) para o qual ele
+autorizadas, sendo impossível usá-lo a não ser nas máquinas para o qual ele
 foi designado. No SNES, o jogo Earthbound contém múltiplas verificações em
 endereços de memória específicos que eram comumente alterados em cópias piratas;
 caso tais modificações fossem encontradas, o número de encontros aleatórios com
@@ -143,28 +134,31 @@ de maneira usual pelo gerenciador de pacotes do sistema operacional Arch Linux,
 foi testado com o jogo Super Mario World em três sistemas de especificações
 variadas: um Raspberry Pi 1 Model B (Broadcom BCM2835), para representar a
 performance no âmbito portátil; um laptop de desempenho médio (Intel Core
-i5-4210U @ 1.70GHz, GeForce GT 740M); e um computador de mesa (Intel Core
-i3-2100 @ 3.10GHz, Intel HD Graphics 2000).
+i5--4210U @ 1.70GHz, GeForce GT 740M); e um computador de mesa (Intel Core
+i3--2100 @ 3.10GHz, Intel HD Graphics 2000).
 
 Os resultados foram obtidos a partir da execução do emulador com o
 \emph{backend} de vídeo SDL\footnote{Simple DirectMedia Layer ---
 \url{https://www.libsdl.org/}}, e são mensurados em FPS\footnote{\emph{frames
 per second}, a frequência em que um dispositivo de processamento de imagens
 produz consecutivas imagens, chamadas de quadros.}. Os núcleos otimizados para
-precisão (\texttt{accuracy}), desempenho (\texttt{performance}) e `'meio-
-termo`' (\texttt{balanced}) foram unificados em versões mais novas do emulador
+precisão (\texttt{accuracy}), desempenho (\texttt{performance}) e ``meio-
+termo'' (\texttt{balanced}) foram unificados em versões mais novas do emulador
 em virtude da vasta complexidade necessária para mantê-los; assim, resultados
 com tais versões podem ser diferentes.
 
 \begin{table}[ht]
 \centering
-\begin{tabular}{|l|ccc|ccc|ccc|}
-\hline
-& \multicolumn{3}{c|}{BCM2835} & \multicolumn{3}{c|}{Core i5} & \multicolumn{3}{c|}{Core i3} \\
-                            & min & med & max & min & med & max & min & med & max \\ \hline
-\texttt{higan-accuracy}     & 1   & 1   & 2   & 49  & 56  & 60  & 56  & 58  & 59  \\ \hline
-\texttt{higan-balanced}     & 2   & 2   & 3   & 60  & 60  & 61  & 169 & 180 & 189 \\ \hline
-\texttt{higan-performance}  & 2   & 2   & 3   & 59  & 60  & 61  & 293 & 302 & 311 \\ \hline
+\begin{tabular}{lccccccccc}
+& \multicolumn{3}{c}{BCM2835} & \multicolumn{3}{c}{Core i5}
+    & \multicolumn{3}{c}{Core i3} \\
+& min & med & max & min & med & max & min & med & max \\
+\texttt{higan-accuracy}
+    & 1   & 1   & 2   & 49  & 56  & 60  & 56  & 58  & 59  \\
+\texttt{higan-balanced}
+    & 2   & 2   & 3   & 60  & 60  & 61  & 169 & 180 & 189 \\
+\texttt{higan-performance}
+    & 2   & 2   & 3   & 59  & 60  & 61  & 293 & 302 & 311 \\
 \end{tabular}
 \caption{Desempenho de vários sistemas rodando \texttt{higan}. Valores médios
 são aproximados para baixo.}
@@ -175,7 +169,7 @@ necessários para simular um sistema completo em software são extraordinários,
 como é possível verificar nos resultados acima. O console SNES funcionava, a uma
 taxa de quadros de no mínimo 30 FPS, com o processador Ricoh 5A22 operando a
 3.58 MHz, enquanto o BCM2835 presente no Raspberry Pi testado contém um
-ARM1176JZF-S com frequência de 700 MHz -- cerca de duzentas vezes maior.
+ARM1176JZF-S com frequência de 700 MHz --- cerca de duzentas vezes maior.
 
 Porém, a precisão obtida com esta grande perda de desempenho é notável em alguns
 casos especiais, caso a emulação seja concebida corretamente em software. Por
@@ -183,7 +177,7 @@ exemplo, diferentemente da maioria dos emuladores, \texttt{higan} renderiza a
 S-PPU\footnote{\emph{SNES Picture Processing Unit}} pixel por pixel, enquanto a
 estratégia comum baseia-se em renderizar a \emph{scanline}\footnote{linhas de
 uma imagem que é composta por pixels, como em um monitor CRT.} inteira a partir
-de um ponto fixo. A emulação torna-se 40\% mais lenta \cite{emustate} com esta
+de um ponto fixo. A emulação torna-se 40\% mais lenta~\cite{emustate} com esta
 tática, porém faz uma grande diferença no jogo Air Strike Patrol, que utiliza
 pedidos de interrupção (IRQs) especialmente sincronizados de modo a ajustar o
 registrador de brilho da tela, para criar um sombreado translúcido embaixo do
@@ -195,19 +189,19 @@ avião controlado pelo jogador.
 \caption{À esquerda, a sombra do avião é corretamente emulada, desenhando a
 \emph{scanline} com valores de brilho heterogêneos. À direita, a emulação
 incorreta: não existe uma referência para acertar inimigos, aumentando a
-dificuldade do jogo. Imagem retirada de \cite{accpower}.}
+dificuldade do jogo. Imagem retirada de~\cite{accpower}.}
 \end{figure}
 
 \section{Segundo a lei}
 
 As leis variam dependendo do país, mas no geral, o uso de emuladores é taxado
 como ilegal por infringir direitos autorais.  No Brasil, de acordo com o Inciso
-I do Art. 6º de \cite{lei9609}, é legal o usuário copiar
+I do Art. 6º de~\cite{lei9609}, é legal o usuário copiar
 
 \begin{quote}
-(...) um só exemplar, de cópia legitimamente adquirida, desde que se destine à
-cópia de salvaguarda ou armazenamento eletrônico, hipótese em que o exemplar
-original servirá de salvaguarda.
+$(\ldots)$ um só exemplar, de cópia legitimamente adquirida, desde que se
+destine à cópia de salvaguarda ou armazenamento eletrônico, hipótese em que
+o exemplar original servirá de salvaguarda.
 \end{quote}
 
 ou seja, o usuário só poderá ter uma (e apenas uma) ROM\footnote{\emph{Read-Only
@@ -216,7 +210,7 @@ de um jogo, se ele já tiver a cópia original. Ainda, a ROM serve apenas para
 fins de armazenamento e seu uso é apenas válido caso a cópia original adquirida
 esteja indisponível.
 
-Na questão de domínio público, o § 2º do Art. 2º de \cite{lei9609} descreve que
+Na questão de domínio público, o § 2º do Art. 2º de~\cite{lei9609} descreve que
 
 \begin{quote}
 Fica assegurada a tutela dos direitos relativos a programa de computador pelo
@@ -240,28 +234,29 @@ ao funcionamento original, assim danificando a preservação do software.
 
 \section{Epílogo}
 O principal problema enfrentado pelos emuladores é garantir a fidelidade do
-hardware em que ele quer simular, exigindo conhecimento profundo deste hardware,
-mesmo assim, a sua simulação nunca chega a total fidelidade, visto as capacidades
-das máquinas de conseguir emular uma outra arquitetura em si, mas consegue
-apresentar o proposito em que o hardware original, juntamente com softwares,
-quiseram passar.
+hardware em que ele quer simular, exigindo conhecimento profundo deste
+hardware, mesmo assim, a sua simulação nunca chega a total fidelidade, visto as
+capacidades das máquinas de conseguir emular uma outra arquitetura em si, mas
+consegue apresentar o proposito em que o hardware original, juntamente com
+softwares, quiseram passar.
 
-O uso ainda é assunto de debate, apesar de emuladores serem taxados como ilegais,
-por também ser um meio de usufruir de tecnologias sem pagar os direitos autorais.
-No entanto, até mesmo no mercado, emuladores são usados para fins de estudo, como
-foi o caso do programador e game designer Yuji Naka, conhecido como um dos
-criadores do personagem de videogames Sonic the Hedgehog, que trabalhou no
-desenvolvimento de um emulador de Famicom (conhecido como Nintendo Entertainment
-System no ocidente) para o Mega Drive, que era concorrente do console na época, no
-final dos anos 1980, o resultado, segundo ele, não foi satisfatório - isto é um dos
-primeiros registros de emuladores entre consoles de videogame.
+O uso ainda é assunto de debate, apesar de emuladores serem taxados como
+ilegais, por também ser um meio de usufruir de tecnologias sem pagar os
+direitos autorais.  No entanto, até mesmo no mercado, emuladores são usados
+para fins de estudo, como foi o caso do programador e game designer Yuji Naka,
+conhecido como um dos criadores do personagem de videogames Sonic the Hedgehog,
+que trabalhou no desenvolvimento de um emulador de Famicom (conhecido como
+Nintendo Entertainment System no ocidente) para o Mega Drive, que era
+concorrente do console na época, no final dos anos 1980, o resultado, segundo
+ele, não foi satisfatório --- isto é um dos primeiros registros de emuladores
+entre consoles de videogame.
 
 Emuladores são ferramentas de estudo, com eles é possível simular um hardware e
 verificar softwares que até então não poderiam ser analisados, seja por
-indisponibilidade, seja por questões práticas específicas. Emuladores são cápsulas
-do tempo, possibilitam o averiguamento de tecnologias mais antigas, trazendo
-informações e o conhecimento passados que são fundamentais para o estudo da
-história humana.
+indisponibilidade, seja por questões práticas específicas. Emuladores são
+cápsulas do tempo, possibilitam o averiguamento de tecnologias mais antigas,
+trazendo informações e o conhecimento passados que são fundamentais para o
+estudo da história humana.
 
 \bibliography{ine5450}
 \bibliographystyle{plain}
